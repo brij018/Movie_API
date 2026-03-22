@@ -1,0 +1,279 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== BASE ===== */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #141414;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 30px;
+  background-color: #000;
+  gap: 16px;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #e50914;
+  white-space: nowrap;
+}
+
+nav form {
+  display: flex;
+  gap: 8px;
+}
+
+nav input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #222;
+  color: #fff;
+  font-size: 0.9rem;
+  width: 240px;
+  outline: none;
+}
+
+nav input:focus {
+  border-color: #e50914;
+}
+
+nav button {
+  padding: 8px 16px;
+  background-color: #e50914;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+nav button:hover {
+  background-color: #b00710;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.container h1 {
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  color: #fff;
+}
+
+/* ===== MOVIE GRID ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+/* ===== MOVIE CARD ===== */
+.card {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #2e2e2e;
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
+  display: block;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #e50914;
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.no-img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  background-color: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.card-info {
+  padding: 10px;
+}
+
+.card-info h3 {
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-info p {
+  font-size: 0.78rem;
+  color: #aaa;
+}
+
+/* ===== DETAIL PAGE ===== */
+.detail {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.detail-poster {
+  width: 280px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.detail-poster.no-img {
+  height: 420px;
+}
+
+.detail-info {
+  flex: 1;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detail-info h1 {
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+
+.tagline {
+  color: #aaa;
+  font-style: italic;
+}
+
+.genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.genre-tag {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.overview {
+  color: #ccc;
+  line-height: 1.7;
+}
+
+/* ===== BACK BUTTON ===== */
+.back-btn {
+  display: inline-block;
+  margin-bottom: 20px;
+  background: #2a2a2a;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.back-btn:hover {
+  background: #e50914;
+}
+
+/* ===== BUTTON ===== */
+.btn {
+  display: inline-block;
+  background-color: #e50914;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.btn:hover {
+  background-color: #b00710;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty {
+  color: #888;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* ===== ERROR PAGE ===== */
+.error-page {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.error-page h1 {
+  font-size: 3rem;
+  color: #e50914;
+  margin-bottom: 16px;
+}
+
+.error-page p {
+  color: #aaa;
+  margin-bottom: 24px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #555;
+  font-size: 0.85rem;
+  border-top: 1px solid #222;
+  margin-top: 40px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav input {
+    width: 160px;
+  }
+
+  .detail {
+    flex-direction: column;
+  }
+
+  .detail-poster {
+    width: 100%;
+  }
+}

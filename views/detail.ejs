@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= movie.title %> | MovieApp</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="/" class="logo">🎬 MovieApp</a>
+    <form action="/search" method="GET">
+      <input type="text" name="query" placeholder="Search a movie..." />
+      <button type="submit">Search</button>
+    </form>
+  </nav>
+
+  <!-- MOVIE DETAIL -->
+  <div class="container">
+
+    <a href="/" class="btn back-btn">← Back to Home</a>
+
+    <div class="detail">
+
+      <!-- Poster -->
+      <% if (movie.poster_path) { %>
+        <img class="detail-poster" src="<%= imgUrl %><%= movie.poster_path %>" alt="<%= movie.title %>" />
+      <% } else { %>
+        <div class="no-img detail-poster">No Image</div>
+      <% } %>
+
+      <!-- Info -->
+      <div class="detail-info">
+        <h1><%= movie.title %></h1>
+
+        <% if (movie.tagline) { %>
+          <p class="tagline"><em>"<%= movie.tagline %>"</em></p>
+        <% } %>
+
+        <p>⭐ <strong><%= movie.vote_average ? movie.vote_average.toFixed(1) : "N/A" %></strong> / 10</p>
+        <p>📅 Release Date: <strong><%= movie.release_date || "N/A" %></strong></p>
+        <p>⏱ Runtime: <strong><%= movie.runtime ? movie.runtime + " min" : "N/A" %></strong></p>
+
+        <!-- Genres -->
+        <% if (movie.genres && movie.genres.length > 0) { %>
+          <div class="genres">
+            <% movie.genres.forEach(function(g) { %>
+              <span class="genre-tag"><%= g.name %></span>
+            <% }); %>
+          </div>
+        <% } %>
+
+        <!-- Overview -->
+        <h3>Overview</h3>
+        <p class="overview"><%= movie.overview || "No description available." %></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Powered by TMDB API</p>
+  </footer>
+
+</body>
+</html>

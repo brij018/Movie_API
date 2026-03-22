@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search: <%= query %> | MovieApp</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="/" class="logo">🎬 MovieApp</a>
+    <form action="/search" method="GET">
+      <input type="text" name="query" placeholder="Search a movie..." value="<%= query %>" />
+      <button type="submit">Search</button>
+    </form>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+    <h1>Results for "<%= query %>"</h1>
+
+    <!-- If no movies found, show a message -->
+    <% if (movies.length === 0) { %>
+      <p class="empty">No movies found. Try another search!</p>
+      <a href="/" class="btn">Go Home</a>
+    <% } else { %>
+
+      <div class="grid">
+        <% movies.forEach(function(movie) { %>
+
+          <a href="/movie/<%= movie.id %>" class="card">
+
+            <% if (movie.poster_path) { %>
+              <img src="<%= imgUrl %><%= movie.poster_path %>" alt="<%= movie.title %>" />
+            <% } else { %>
+              <div class="no-img">No Image</div>
+            <% } %>
+
+            <div class="card-info">
+              <h3><%= movie.title %></h3>
+              <p>
+                ⭐ <%= movie.vote_average ? movie.vote_average.toFixed(1) : "N/A" %>
+                &nbsp;|&nbsp;
+                <%= movie.release_date ? movie.release_date.split("-")[0] : "N/A" %>
+              </p>
+            </div>
+
+          </a>
+
+        <% }); %>
+      </div>
+
+    <% } %>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Powered by TMDB API</p>
+  </footer>
+
+</body>
+</html>
